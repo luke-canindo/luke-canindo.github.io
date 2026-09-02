@@ -13,6 +13,9 @@
       packages = with pkgs; [
 	pnpm
       ];
+
+      shellHook = ''
+      '';
     };
   };
 }
