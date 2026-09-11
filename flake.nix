@@ -9,14 +9,30 @@
     pkgs = import inputs.nixpkgs { inherit system; };
   in
   {
-    devShells.${system}.default = pkgs.mkShell {
-      packages = with pkgs; [
-	pnpm
-	nodejs
-      ];
+    devShells.${system} = {
+      default = pkgs.mkShell {
+	packages = with pkgs; [
+	  pnpm
+	  nodejs
+	];
 
-      shellHook = ''
-      '';
+	shellHook = ''
+	'';
+      };
+
+      luke = pkgs.mkShell {
+	packages = with pkgs; [
+	  pnpm
+	  nodejs
+	  tmux
+	  zsh
+	];
+
+	shellHook = ''
+	  SHELL=zsh
+	  tmux
+	'';
+      };
     };
   };
 }
